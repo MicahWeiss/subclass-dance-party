@@ -3,8 +3,9 @@ body, html{
 }
 body{
   margin: 0px;
-  background-color:#444;
+  background-color: forestgreen;
   font-size: 18px;
+  opacity: 20%;
 }
 body, a:link, a:visited, a:active{
   color: lightblue;
@@ -24,4 +25,21 @@ body, a:link, a:visited, a:active{
   border:10px solid red;
   border-radius:10px;
   position:absolute;
+}
+
+.hamsterDancer{
+  background: url("src/hamster.png");
+  border: none;
+  background-color: white;
+  background-size: contain;
+  width: 50px;
+  height: 50px;
+}
+
+.carrotDancer{
+  background: url("src/carrot.png");
+  border: none;
+  background-size: contain;
+  width: 40px;
+  height: 40px;
 }

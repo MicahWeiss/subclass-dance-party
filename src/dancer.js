@@ -13,7 +13,7 @@ var Dancer = function(top, left, timeBetweenSteps) { //constructor -- need to ch
 Dancer.prototype.step = function(){
   // the basic dancer doesn't do anything interesting at all on each step,
   // it just schedules the next step
-  setTimeout(this.step.bind(this), this.timeBetweenSteps);
+  this.timer = setTimeout(this.step.bind(this), this.timeBetweenSteps);
 }
 Dancer.prototype.setPosition = function(top, left){
   // Use css top and left properties to position our <span> tag
@@ -24,6 +24,11 @@ Dancer.prototype.setPosition = function(top, left){
     left: left
   };
   this.$node.css(styleSettings);
+}
+
+Dancer.prototype.lineUp = function(){
+  clearTimeout(this.timer);
+  this.$node.animate({left: 500}, "fast");
 }
 
 

@@ -28,6 +28,37 @@ $(document).ready(function() {
       Math.random() * 1000
     );
     $('body').append(dancer.$node);
+    window.dancers.push(dancer);
+    
+
+  });
+
+  $('.hamsterDancer').on('hover', function(event) {
+    this.$node.animate({background: 'pink'}, "fast")
+  });
+
+  $('.lineUpButton').on('click', function(event) {
+    for(var i=0; i< window.dancers.length; i++){
+      window.dancers[i].lineUp();
+    }
+  });
+
+  $('.eatButton').on('click', function(event) {
+    var hamsters = [];
+    var carrots = [];
+    for (var i = 0; i < window.dancers.length; i++) {
+      if (window.dancers[i].type === "hamster") {
+        hamsters.push(window.dancers[i]);
+      } else if (window.dancers[i].type === "carrots") {
+        carrots.push(window.dancers[i]);
+      }
+    }
+    for (var j = 0; j < hamsters.length; j++) {
+      hamsters[j].eat();
+    }
+    for (var k = 0; k < carrots.length; k++) {
+      carrots[k].disappear();
+    }
   });
 });
 
