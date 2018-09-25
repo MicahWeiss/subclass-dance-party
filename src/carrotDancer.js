@@ -24,8 +24,9 @@ var carrotDancer = function(top, left, timeBetweenSteps) {
     //this.$node.toggle();
   };
   carrotDancer.prototype.lineUp = function(){
-    // clearTimeout(this.timer);
+    clearTimeout(this.timer);
     this.$node.animate({left: 800, top: 800}, "fast");
+    this.step();
   }
 
   carrotDancer.prototype.disappear = function() {

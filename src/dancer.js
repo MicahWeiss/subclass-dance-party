@@ -27,7 +27,7 @@ Dancer.prototype.setPosition = function(top, left){
 }
 
 Dancer.prototype.lineUp = function(){
-  clearTimeout(this.timer);
+  // clearTimeout(this.timer);
   this.$node.animate({left: 500}, "fast");
 }
 

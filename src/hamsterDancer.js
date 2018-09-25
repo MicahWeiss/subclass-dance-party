@@ -22,8 +22,8 @@ var hamsterDancer = function(top, left, timeBetweenSteps) {
     this.$node.animate({left : "-=50"}, "fast")
     this.$node.animate({left : "+=50"}, "fast")
     this.$node.on('mouseover', function(event) {
-      console.log("working")
-      this.css({background: 'pink'})
+      //var obj = document.getElementById("audio");
+      window.obj.play();
     });
   
     //this.$node.toggle();
@@ -42,3 +42,5 @@ var hamsterDancer = function(top, left, timeBetweenSteps) {
     this.$node.animate({height: "+=50", width: "+=50"});
     this.step();
   }
+
+  

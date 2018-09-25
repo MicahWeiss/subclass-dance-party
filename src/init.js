@@ -33,10 +33,6 @@ $(document).ready(function() {
 
   });
 
-  $('.hamsterDancer').on('hover', function(event) {
-    this.$node.animate({background: 'pink'}, "fast")
-  });
-
   $('.lineUpButton').on('click', function(event) {
     for(var i=0; i< window.dancers.length; i++){
       window.dancers[i].lineUp();
@@ -60,5 +56,12 @@ $(document).ready(function() {
       carrots[k].disappear();
     }
   });
+
+  
+    window.obj = document.createElement("audio");
+    window.obj.src = "src/mousesqueak.wav";
+    window.obj.volume = 0.7;
+    window.obj.autoPlay = false;
+    window.obj.preLoad = true;    
 });
 
