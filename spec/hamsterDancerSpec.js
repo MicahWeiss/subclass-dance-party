@@ -5,7 +5,7 @@ describe('hamsterDancer', function() {
   
     beforeEach(function() {
       clock = sinon.useFakeTimers();
-      hamsterDancer = new hamsterDancer(10, 20, timeBetweenSteps);
+      hamsterDancer = new HamsterDancer(10, 20, timeBetweenSteps);
     });
   
     it('should have a jQuery $node object', function() {
@@ -15,7 +15,7 @@ describe('hamsterDancer', function() {
     it('should have a step function that makes its node blink', function() {
       sinon.spy(hamsterDancer.$node, 'toggle');
       hamsterDancer.step();
-      expect(hamsterDancer.$node.toggle.called).to.be.true;
+      expect(hamsterDancer.animated).to.be.true; //changed test
     });
   
     describe('dance', function() {

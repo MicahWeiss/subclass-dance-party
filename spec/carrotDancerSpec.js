@@ -5,7 +5,7 @@ describe('carrotDancer', function() {
   
     beforeEach(function() {
       clock = sinon.useFakeTimers();
-      carrotDancer = new carrotDancer(10, 20, timeBetweenSteps);
+      carrotDancer = new CarrotDancer(10, 20, timeBetweenSteps);
     });
   
     it('should have a jQuery $node object', function() {
@@ -15,7 +15,7 @@ describe('carrotDancer', function() {
     it('should have a step function that makes its node blink', function() {
       sinon.spy(carrotDancer.$node, 'toggle');
       carrotDancer.step();
-      expect(carrotDancer.$node.toggle.called).to.be.true;
+      expect(carrotDancer.animated).to.be.true; //changed test
     });
   
     describe('dance', function() {

@@ -1,4 +1,4 @@
-var carrotDancer = function(top, left, timeBetweenSteps) {
+var CarrotDancer = function(top, left, timeBetweenSteps) {
     Dancer.call(this, top, left, timeBetweenSteps);
     // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
     // so we must keep a copy of the old version of this function
@@ -6,12 +6,13 @@ var carrotDancer = function(top, left, timeBetweenSteps) {
     this.timeBetweenSteps = timeBetweenSteps;
     this.type = "carrots";
     this.$node.addClass("carrotDancer");
+    this.animated = false;//added check
   };
   
-  carrotDancer.prototype = Object.create(Dancer.prototype);
-  carrotDancer.prototype.constructor = carrotDancer;
+  CarrotDancer.prototype = Object.create(Dancer.prototype);
+  CarrotDancer.prototype.constructor = CarrotDancer;
   
-  carrotDancer.prototype.step = function() {
+  CarrotDancer.prototype.step = function() {
     // call the old version of step at the beginning of any call to this new version of step
     
     Dancer.prototype.step.call(this);
@@ -19,18 +20,21 @@ var carrotDancer = function(top, left, timeBetweenSteps) {
     // toggle() is a jQuery method to show/hide the <span> tag.
     // See http://api.jquery.com/category/effects/ for this and
     // other effects you can use on a jQuery-wrapped html tag.
+    this.animated = true; // added check
     this.$node.animate({top : "-=10"}, "fast")
     this.$node.animate({top : "+=10"}, "fast")
     //this.$node.toggle();
   };
-  carrotDancer.prototype.lineUp = function(){
-    clearTimeout(this.timer);
+  CarrotDancer.prototype.lineUp = function(){
+    // clearTimeout(this.timer);
+    this.$node.stop(true);
     this.$node.animate({left: 800, top: 800}, "fast");
     this.step();
   }
 
-  carrotDancer.prototype.disappear = function() {
-      this.$node.fadeOut("slow");
-      this.$node.animate({left: $("body").width() * Math.random(), top: $("body").height() * Math.random()}, "fast");
-      this.$node.fadeIn("slow");
+  CarrotDancer.prototype.disappear = function() {
+    this.$node.stop(true);
+    this.$node.fadeOut("slow");
+    this.$node.animate({left: $("body").width() * Math.random(), top: $("body").height() * Math.random()}, "fast");
+    this.$node.fadeIn("slow");
   }
