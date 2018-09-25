@@ -1,5 +1,6 @@
-var HamsterDancer = function(top, left, timeBetweenSteps) {
-    Dancer.call(this, top, left, timeBetweenSteps);
+var HamsterDancer = class HamsterDancer extends Dancer{
+  constructor (top, left, timeBetweenSteps) {
+    super(top, left, timeBetweenSteps);
     // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
     // so we must keep a copy of the old version of this function
     this.oldStep = Dancer.prototype.step;
@@ -8,11 +9,8 @@ var HamsterDancer = function(top, left, timeBetweenSteps) {
     this.animated = false;
     this.$node.addClass("hamsterDancer");
   };
-  
-  HamsterDancer.prototype = Object.create(Dancer.prototype);
-  HamsterDancer.prototype.constructor = HamsterDancer;
-  
-  HamsterDancer.prototype.step = function() {
+    
+  step() {
     // call the old version of step at the beginning of any call to this new version of step
     
     Dancer.prototype.step.call(this);
@@ -31,14 +29,14 @@ var HamsterDancer = function(top, left, timeBetweenSteps) {
     //this.$node.toggle();
   };
 
-  HamsterDancer.prototype.lineUp = function(){
+  lineUp() {
     // clearTimeout(this.timer);
     this.$node.stop(true);
     this.$node.animate({left: 500}, "fast");
     // this.step();
   }
 
-  HamsterDancer.prototype.eat = function() {
+  eat() {
     // clearTimeout(this.timer);
     this.$node.stop(true);
     this.$node.animate({left: 800, top: 800}, "slow")
@@ -46,5 +44,5 @@ var HamsterDancer = function(top, left, timeBetweenSteps) {
     this.$node.animate({height: "+=50", width: "+=50"}, Math.random() * 1000);
     this.step();
   }
-
+}
   

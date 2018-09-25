@@ -58,10 +58,11 @@ $(document).ready(function() {
   });
 
   
-    window.obj = document.createElement("audio");
-    window.obj.src = "src/mousesqueak.wav";
-    window.obj.volume = 0.7;
-    window.obj.autoPlay = false;
-    window.obj.preLoad = true;    
+  window.obj = document.createElement("audio");
+  window.obj.src = "src/squeeze-toy-3.wav";
+  window.obj.volume = 0.7;
+  window.obj.autoPlay = false;
+  window.obj.preLoad = true;
+
 });
 
